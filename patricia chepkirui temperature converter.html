@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Interactive Temperature Converter</title>
+  <style>
+    body {
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      display: grid;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #09aaa2;
+    }
+    .conversion {
+      background-color: rgb(122, 52, 6);
+      border-radius: 50px;
+      padding: 20px;
+      box-shadow: 0 0 5px rgba(15, 6, 6, 0.993);
+      text-align: center;
+    }
+    label {
+      display: inline-table;
+      margin-bottom: 10px;
+    }
+    input {
+      width: 100%;
+      padding: 5px;
+      border: 1px solid #cf1196;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="conversion">
+    <h2>Interactive Temperature Converter</h2>
+    <p>Below is an interactive temperature converter</p>
+    <p>Enter celsius and the fahrenheit will be displayed below</p>
+    <label for="celsius">Celsius:</label>
+    <input type="number" id="celsius" oninput="convert('celsius')" placeholder="Enter the Celsius">
+    <br>
+    <label for="fahrenheit">Fahrenheit:</label>
+    <input type="number" id="fahrenheit" oninput="convert('fahrenheit')" placeholder="Enter the Fahrenheit">
+  </div>
+
+  <script>
+    function convert(type) {
+      const celsiusInput = document.getElementById('celsius');
+      const fahrenheitInput = document.getElementById('fahrenheit');
+
+      if (type === 'celsius') {
+        const celsius = parseFloat(celsiusInput.value);
+        const fahrenheit = (celsius * 9 / 5) + 32;
+        fahrenheitInput.value = fahrenheit.toFixed(2);
+      } else if (type === 'fahrenheit') {
+        const fahrenheit = parseFloat(fahrenheitInput.value);
+        const celsius = (fahrenheit - 32) * 5 / 9;
+        celsiusInput.value = celsius.toFixed(2);
+      }
+    }
+  </script>
+</body>
+</html>
